@@ -1,0 +1,32 @@
+[gd_scene load_steps=7 format=3 uid="uid://bh167nkt5e25o"]
+
+[ext_resource type="Script" path="res://scripts/key.gd" id="1_2n0y5"]
+[ext_resource type="Script" path="res://scripts/item_pick.gd" id="1_u1i2a"]
+[ext_resource type="Script" path="res://items/item scripts/KeyResource.gd" id="2_tc4mo"]
+[ext_resource type="PackedScene" uid="uid://ditijdsimb4o8" path="res://assets/Key.glb" id="3_cfvtb"]
+
+[sub_resource type="Resource" id="Resource_kok7e"]
+script = ExtResource("2_tc4mo")
+key_id = 1
+name = "Not so STD key"
+type = 3
+hover_text = "Not so std key"
+item_name = ""
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_om7l3"]
+radius = 2.0
+
+[node name="Key" type="Node3D"]
+script = ExtResource("1_2n0y5")
+item_data = SubResource("Resource_kok7e")
+
+[node name="KeyMesh2" parent="." instance=ExtResource("3_cfvtb")]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="KeyMesh" type="MeshInstance3D" parent="."]
+
+[node name="PickupComponent" type="Area3D" parent="."]
+script = ExtResource("1_u1i2a")
+
+[node name="PickupArea" type="CollisionShape3D" parent="PickupComponent"]
+shape = SubResource("SphereShape3D_om7l3")

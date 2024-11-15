@@ -1,0 +1,32 @@
+[gd_scene load_steps=6 format=3 uid="uid://fq6255lw7kne"]
+
+[ext_resource type="PackedScene" uid="uid://cc1m2a1obsyn4" path="res://addons/fpc/character.tscn" id="1_pdse2"]
+[ext_resource type="Script" path="res://scripts/inventory_manager.gd" id="2_kjr1c"]
+[ext_resource type="PackedScene" uid="uid://bsriu8lot7q13" path="res://scenes/Inventory.tscn" id="3_o4e7u"]
+[ext_resource type="Shader" path="res://shaders/old_relic_shader.gdshader" id="4_br74a"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7ku3t"]
+shader = ExtResource("4_br74a")
+
+[node name="Player" type="Node3D" groups=["Player"]]
+
+[node name="CharacterController" parent="." groups=["Player"] instance=ExtResource("1_pdse2")]
+
+[node name="InventoryManager" type="Node3D" parent="."]
+script = ExtResource("2_kjr1c")
+
+[node name="InventoryUI" parent="InventoryManager" instance=ExtResource("3_o4e7u")]
+
+[node name="HealthManager" type="Node3D" parent="."]
+
+[node name="RelicShader" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="ColorRect" type="ColorRect" parent="RelicShader"]
+material = SubResource("ShaderMaterial_7ku3t")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2

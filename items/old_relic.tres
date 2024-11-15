@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Item" load_steps=2 format=3 uid="uid://vdwirr5n2vqu"]
+
+[ext_resource type="Script" path="res://items/item scripts/ItemResource.gd" id="1_lwhnx"]
+
+[resource]
+script = ExtResource("1_lwhnx")
+name = ""
+type = 0
+hover_text = "You don't know where this came from."
+item_name = ""

@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Key" load_steps=2 format=3 uid="uid://b4hr0vtpxkacg"]
+
+[ext_resource type="Script" path="res://items/item scripts/KeyResource.gd" id="1_qo1o5"]
+
+[resource]
+script = ExtResource("1_qo1o5")
+key_id = 0
+name = "Standard Key"
+type = 3
+hover_text = ""
+item_name = ""

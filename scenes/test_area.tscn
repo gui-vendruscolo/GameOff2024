@@ -1,0 +1,252 @@
+[gd_scene load_steps=26 format=3 uid="uid://dtdtxktiomx7"]
+
+[ext_resource type="PackedScene" uid="uid://fq6255lw7kne" path="res://scenes/player.tscn" id="1_kj16e"]
+[ext_resource type="Texture2D" uid="uid://chwgq7n4yptk4" path="res://assets/696.jpg" id="2_qmw4v"]
+[ext_resource type="PackedScene" uid="uid://bhg8lnamwytiu" path="res://scenes/OldRelic.tscn" id="3_a85go"]
+[ext_resource type="PackedScene" uid="uid://cbpsk4p2wp4w8" path="res://scenes/round_tree.tscn" id="3_n3552"]
+[ext_resource type="PackedScene" uid="uid://s0aocdhsr12w" path="res://scenes/mansion.tscn" id="4_fsbhn"]
+[ext_resource type="Shader" path="res://shaders/dithering_shader.gdshader" id="5_7q3g5"]
+[ext_resource type="PackedScene" uid="uid://5twnhgxkg8vr" path="res://scenes/door.tscn" id="5_surw7"]
+[ext_resource type="Shader" path="res://shaders/chromatic_aberration.gdshader" id="5_x4b4s"]
+[ext_resource type="PackedScene" uid="uid://bh167nkt5e25o" path="res://scenes/items/key.tscn" id="6_57k8d"]
+[ext_resource type="Script" path="res://items/item scripts/KeyResource.gd" id="7_l1165"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_654s4"]
+size = Vector3(500, 2, 500)
+
+[sub_resource type="BoxMesh" id="BoxMesh_tvbui"]
+size = Vector3(60, 2, 60)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_18bd4"]
+albedo_color = Color(0.131181, 0.529796, 0, 1)
+albedo_texture = ExtResource("2_qmw4v")
+uv1_triplanar = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_bvc1t"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xcsvs"]
+albedo_color = Color(0.992023, 0.657819, 0, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7hku0"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_ml625"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3l2iw"]
+albedo_color = Color(0, 0.384418, 0.616206, 1)
+emission_enabled = true
+emission = Color(0, 0.384314, 0.615686, 1)
+emission_energy_multiplier = 6.0
+
+[sub_resource type="PhysicalSkyMaterial" id="PhysicalSkyMaterial_2fju0"]
+
+[sub_resource type="Sky" id="Sky_65dsw"]
+sky_material = SubResource("PhysicalSkyMaterial_2fju0")
+
+[sub_resource type="Environment" id="Environment_60fls"]
+background_mode = 2
+sky = SubResource("Sky_65dsw")
+ambient_light_color = Color(0.0605303, 0.0605303, 0.0605303, 1)
+fog_density = 0.05
+volumetric_fog_density = 0.015
+volumetric_fog_albedo = Color(0.276054, 0.36337, 0.403651, 1)
+volumetric_fog_emission = Color(0.319663, 0.41361, 0.458214, 1)
+
+[sub_resource type="Resource" id="Resource_jo3wf"]
+script = ExtResource("7_l1165")
+key_id = 2
+name = "STD key"
+type = 3
+hover_text = "Not so std key"
+item_name = ""
+
+[sub_resource type="QuadMesh" id="QuadMesh_dlmmx"]
+flip_faces = true
+size = Vector2(2, 2)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_s20p8"]
+render_priority = 0
+shader = ExtResource("5_x4b4s")
+shader_parameter/r_displacement = Vector2(3, 0)
+shader_parameter/g_displacement = Vector2(0, 0)
+shader_parameter/b_displacement = Vector2(-3, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fskfs"]
+shader = ExtResource("5_7q3g5")
+shader_parameter/r_displacement = Vector2(3, 0)
+shader_parameter/g_displacement = Vector2(0, 0)
+shader_parameter/b_displacement = Vector2(-3, 0)
+shader_parameter/pixelate = 256.0
+
+[node name="TestArea" type="Node3D"]
+
+[node name="Level" type="Node3D" parent="."]
+
+[node name="OldRelic" parent="Level" instance=ExtResource("3_a85go")]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, -0.6164, 1.59032, -8.92527)
+
+[node name="Trees" type="Node3D" parent="Level"]
+
+[node name="RoundTree2" parent="Level/Trees" instance=ExtResource("3_n3552")]
+transform = Transform3D(0.977717, 0, 0.209926, 0, 1, 0, -0.209926, 0, 0.977717, -32.5668, 0, 10.5592)
+
+[node name="RoundTree3" parent="Level/Trees" instance=ExtResource("3_n3552")]
+transform = Transform3D(0.977717, 0, 0.209926, 0, 1, 0, -0.209926, 0, 0.977717, -36.0499, 0, 18.1385)
+
+[node name="RoundTree4" parent="Level/Trees" instance=ExtResource("3_n3552")]
+transform = Transform3D(0.977717, 0, 0.209926, 0, 1, 0, -0.209926, 0, 0.977717, -42.5403, 0, 8.25767)
+
+[node name="RoundTree5" parent="Level/Trees" instance=ExtResource("3_n3552")]
+transform = Transform3D(0.977717, 0, 0.209926, 0, 1, 0, -0.209926, 0, 0.977717, -44.6884, 0, 17.0036)
+
+[node name="RoundTree6" parent="Level/Trees" instance=ExtResource("3_n3552")]
+transform = Transform3D(0.977717, 0, 0.209926, 0, 1, 0, -0.209926, 0, 0.977717, -48.1716, 0, 24.5829)
+
+[node name="RoundTree7" parent="Level/Trees" instance=ExtResource("3_n3552")]
+transform = Transform3D(0.977717, 0, 0.209926, 0, 1, 0, -0.209926, 0, 0.977717, -31.953, 0, 27.284)
+
+[node name="RoundTree8" parent="Level/Trees" instance=ExtResource("3_n3552")]
+transform = Transform3D(0.977717, 0, 0.209926, 0, 1, 0, -0.209926, 0, 0.977717, -42.043, 0, -23.9999)
+
+[node name="RoundTree9" parent="Level/Trees" instance=ExtResource("3_n3552")]
+transform = Transform3D(0.977717, 0, 0.209926, 0, 1, 0, -0.209926, 0, 0.977717, -43.8575, 0, -15.8583)
+
+[node name="RoundTree10" parent="Level/Trees" instance=ExtResource("3_n3552")]
+transform = Transform3D(0.977717, 0, 0.209926, 0, 1, 0, -0.209926, 0, 0.977717, -52.2774, 0, -24.1565)
+
+[node name="RoundTree11" parent="Level/Trees" instance=ExtResource("3_n3552")]
+transform = Transform3D(0.977717, 0, 0.209926, 0, 1, 0, -0.209926, 0, 0.977717, -52.5417, 0, -15.1545)
+
+[node name="RoundTree12" parent="Level/Trees" instance=ExtResource("3_n3552")]
+transform = Transform3D(0.977717, 0, 0.209926, 0, 1, 0, -0.209926, 0, 0.977717, -54.3561, 0, -7.01291)
+
+[node name="RoundTree13" parent="Level/Trees" instance=ExtResource("3_n3552")]
+transform = Transform3D(0.977717, 0, 0.209926, 0, 1, 0, -0.209926, 0, 0.977717, -37.932, 0, -7.77668)
+
+[node name="RoundTree14" parent="Level/Trees" instance=ExtResource("3_n3552")]
+transform = Transform3D(0.977717, 0, 0.209926, 0, 1, 0, -0.209926, 0, 0.977717, 55.3176, 0, 14.2045)
+
+[node name="RoundTree15" parent="Level/Trees" instance=ExtResource("3_n3552")]
+transform = Transform3D(0.977717, 0, 0.209926, 0, 1, 0, -0.209926, 0, 0.977717, 51.8344, 0, 21.7838)
+
+[node name="RoundTree16" parent="Level/Trees" instance=ExtResource("3_n3552")]
+transform = Transform3D(0.977717, 0, 0.209926, 0, 1, 0, -0.209926, 0, 0.977717, 45.3441, 0, 11.903)
+
+[node name="RoundTree17" parent="Level/Trees" instance=ExtResource("3_n3552")]
+transform = Transform3D(0.977717, 0, 0.209926, 0, 1, 0, -0.209926, 0, 0.977717, 43.196, 0, 20.6489)
+
+[node name="RoundTree18" parent="Level/Trees" instance=ExtResource("3_n3552")]
+transform = Transform3D(0.977717, 0, 0.209926, 0, 1, 0, -0.209926, 0, 0.977717, 39.7128, 0, 28.2282)
+
+[node name="RoundTree19" parent="Level/Trees" instance=ExtResource("3_n3552")]
+transform = Transform3D(0.977717, 0, 0.209926, 0, 1, 0, -0.209926, 0, 0.977717, 55.9314, 0, 30.9293)
+
+[node name="RoundTree20" parent="Level/Trees" instance=ExtResource("3_n3552")]
+transform = Transform3D(0.977717, 0, 0.209926, 0, 1, 0, -0.209926, 0, 0.977717, 45.8414, 0, -20.3546)
+
+[node name="RoundTree21" parent="Level/Trees" instance=ExtResource("3_n3552")]
+transform = Transform3D(0.977717, 0, 0.209926, 0, 1, 0, -0.209926, 0, 0.977717, 44.0269, 0, -12.2131)
+
+[node name="RoundTree22" parent="Level/Trees" instance=ExtResource("3_n3552")]
+transform = Transform3D(0.977717, 0, 0.209926, 0, 1, 0, -0.209926, 0, 0.977717, 35.607, 0, -20.5112)
+
+[node name="RoundTree23" parent="Level/Trees" instance=ExtResource("3_n3552")]
+transform = Transform3D(0.977717, 0, 0.209926, 0, 1, 0, -0.209926, 0, 0.977717, 35.3427, 0, -11.5092)
+
+[node name="RoundTree24" parent="Level/Trees" instance=ExtResource("3_n3552")]
+transform = Transform3D(0.977717, 0, 0.209926, 0, 1, 0, -0.209926, 0, 0.977717, 33.5282, 0, -3.36763)
+
+[node name="RoundTree25" parent="Level/Trees" instance=ExtResource("3_n3552")]
+transform = Transform3D(0.977717, 0, 0.209926, 0, 1, 0, -0.209926, 0, 0.977717, 49.9524, 0, -4.13141)
+
+[node name="RoundTree26" parent="Level/Trees" instance=ExtResource("3_n3552")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37.2258, 0, 31.8567)
+
+[node name="RoundTree" parent="Level/Trees" instance=ExtResource("3_n3552")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -46.8902, 0, 0)
+
+[node name="Ground" type="StaticBody3D" parent="Level"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Level/Ground"]
+shape = SubResource("BoxShape3D_654s4")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Level/Ground"]
+transform = Transform3D(12.8446, 0, 0, 0, 0.929616, 0, 0, 0, 12.8446, 0.307295, 3.8147e-06, 0.110321)
+mesh = SubResource("BoxMesh_tvbui")
+surface_material_override/0 = SubResource("StandardMaterial3D_18bd4")
+
+[node name="Obstacle" type="MeshInstance3D" parent="Level"]
+transform = Transform3D(4.5, 0, 0, 0, 3.6, 0, 0, 0, 2.9, 13, 1.6272, 18)
+mesh = SubResource("BoxMesh_bvc1t")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_xcsvs")
+
+[node name="Obstacle3" type="MeshInstance3D" parent="Level"]
+transform = Transform3D(4.5, 0, 0, 0, 3.6, 0, 0, 0, 2.9, -16, 2, 17)
+mesh = SubResource("BoxMesh_bvc1t")
+skeleton = NodePath("../..")
+
+[node name="Obstacle4" type="Node3D" parent="Level"]
+transform = Transform3D(-4.37114e-07, -0.817, 0, 10, -3.57122e-08, 0, 0, 0, 15.429, 18.0753, 5.09156, -20.059)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Level/Obstacle4"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Level/Obstacle4/StaticBody3D"]
+shape = SubResource("BoxShape3D_7hku0")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Level/Obstacle4/StaticBody3D"]
+mesh = SubResource("BoxMesh_ml625")
+skeleton = NodePath("../CollisionShape3D")
+
+[node name="Moon" type="CSGSphere3D" parent="Level"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.8182, 120.121, -210.218)
+material_override = SubResource("StandardMaterial3D_3l2iw")
+cast_shadow = 0
+radius = 20.0
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Level"]
+environment = SubResource("Environment_60fls")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Level"]
+transform = Transform3D(1, 0, 0, 0, 0.633718, 0.773564, 0, -0.773564, 0.633718, -1, 17, 1)
+light_color = Color(0, 0.173005, 0.303814, 1)
+light_energy = 0.1
+light_volumetric_fog_energy = 16.0
+shadow_enabled = true
+
+[node name="Mansion" parent="Level" instance=ExtResource("4_fsbhn")]
+
+[node name="Door2" parent="Level" instance=ExtResource("5_surw7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00142395, 0, 37.0806)
+key_id = 2
+
+[node name="Door" parent="Level" instance=ExtResource("5_surw7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000711977, 0, 18.5403)
+key_id = 1
+
+[node name="Key" parent="Level" instance=ExtResource("6_57k8d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.24661, 28.772)
+
+[node name="Key2" parent="Level" instance=ExtResource("6_57k8d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.93143, 1.24661, 28.7532)
+item_data = SubResource("Resource_jo3wf")
+
+[node name="PostProcessingQuad" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.15444, 0)
+extra_cull_margin = 16384.0
+mesh = SubResource("QuadMesh_dlmmx")
+surface_material_override/0 = SubResource("ShaderMaterial_s20p8")
+
+[node name="OldRelicTexture" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="OldRelicTexture"]
+material = SubResource("ShaderMaterial_fskfs")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Player" parent="." instance=ExtResource("1_kj16e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 25.7949)

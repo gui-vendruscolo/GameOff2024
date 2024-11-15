@@ -1,0 +1,25 @@
+[gd_scene load_steps=7 format=3 uid="uid://bhg8lnamwytiu"]
+
+[ext_resource type="Script" path="res://scripts/OldRelic.gd" id="1_3r7kq"]
+[ext_resource type="Resource" uid="uid://vdwirr5n2vqu" path="res://items/old_relic.tres" id="2_wgede"]
+[ext_resource type="BoxMesh" uid="uid://bydbc6tvwub4f" path="res://items/item resources/OldRelic_mesh.tres" id="3_bf3dm"]
+[ext_resource type="PackedScene" uid="uid://b4efo78totlt7" path="res://scenes/components/pick_up_component.tscn" id="4_py3l3"]
+[ext_resource type="Script" path="res://scripts/equip_component.gd" id="5_0h0tv"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7i1da"]
+albedo_color = Color(0.242232, 0.376603, 9.62615e-08, 1)
+
+[node name="OldRelic" type="Node3D"]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
+script = ExtResource("1_3r7kq")
+item_data = ExtResource("2_wgede")
+
+[node name="MeshInstance" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.261861, 0)
+mesh = ExtResource("3_bf3dm")
+surface_material_override/0 = SubResource("StandardMaterial3D_7i1da")
+
+[node name="PickUpComponent" parent="." instance=ExtResource("4_py3l3")]
+
+[node name="EquipComponent" type="Node3D" parent="."]
+script = ExtResource("5_0h0tv")
